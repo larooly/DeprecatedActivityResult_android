@@ -48,16 +48,16 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onActivityResult(ActivityResult result) {
                         if(result.getResultCode()== RESULT_OK){
-                            Log.d("s0s",result.getData().toString());
-                            Intent k =  result.getData();
-                            Uri l =  k.getData();
+                            Log.d("system","ActResult + "+result.getData().toString());
+                            //Intent k =  result.getData();
+                            //Uri l =  k.getData();
 
                            int j = result.getData().getIntExtra("OK",0);//이제 무조건 형식이 무엇인지 알아야한다.
                             //이거 만약 받은 타입이랑 달라지면 아예null값이 뜬다
-                            Log.d("ss","s0"+String.valueOf(j));
+                            Log.d("system","s0"+String.valueOf(j));
 
                         }else {
-                            Log.d("ss","s"+String.valueOf(result.getResultCode()));
+                            Log.d("system","s0Else"+String.valueOf(result.getResultCode()));
                            // Log.d("ss","k"+String.valueOf(mLauncher.getClass()));
                         }
                     }
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         ActivityResultLauncher<Intent> mkoko = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
             @Override
             public void onActivityResult(ActivityResult result) {
-                Log.d("ko","ko");
+                Log.d("system","mainButton Click");
                 return;
             }
         });
@@ -82,18 +82,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.d("d","100");//이걸 뭐로?
+        Log.d("system","100");//여기로 돌아올때 작동
 
     }
     ActivityResultLauncher<Intent> mLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
         public void onActivityResult(ActivityResult result) {
             if(result.getResultCode()== RESULT_OK){
-                Log.d("ss",result.getData().toString());
+                Log.d("system","mlauncherResult + "+result.getData().toString());
 
             }else {
-                Log.d("ss","s"+String.valueOf(result.getResultCode()));
-                Log.d("ss","k"+String.valueOf(mLauncher.getClass()));
+                Log.d("system","s"+String.valueOf(result.getResultCode()));
+                Log.d("system","k"+String.valueOf(mLauncher.getClass()));
             }
 
         }
